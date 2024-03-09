@@ -51,6 +51,7 @@ public :
 		
 		ManufatureDate.year += add;
 	}
+	char* getbrand() { return Brand; }
 	void operator=(char* date) {
 		ManufatureDate = date;
 	}

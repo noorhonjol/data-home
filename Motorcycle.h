@@ -28,6 +28,11 @@ public  :
 		IncreamentAsVehicle(increament);
 		return *this;
 	}
+	Motorcycle operator=(char* date) {
+		Motorcycle temp(getbrand(), date,Type ,Color );
+		*this = temp;
+		return *this;
+	}
 };
 
 
