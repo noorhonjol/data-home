@@ -21,7 +21,7 @@ public :
 	Vehicle() { Brand = "Not initialized"; ManufatureDate = "1/1/2000"; };
 	~Vehicle() { delete(Brand); };
 	friend ostream& operator<<(ostream&out,Vehicle obj){
-		printf("%s", obj.Brand);
+		printf("Brand: %s", obj.Brand);
 		cout <<", Manufaturing Date: " << obj.ManufatureDate;
 	}
 	bool operator==(Vehicle obj) {

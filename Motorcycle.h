@@ -16,7 +16,7 @@ public  :
 		delete(Color);
 	}
 	friend ostream& operator<<(ostream& out, Motorcycle obj) {
-		cout << "Motorcycle Info: "; obj.PrintAsVehicle();
+		obj.PrintAsVehicle();
 		cout << ", Type: "; printf("%s ,", obj.Type);
 		cout << ", Color: "; printf("%s\n", obj.Color);
 		return out;
