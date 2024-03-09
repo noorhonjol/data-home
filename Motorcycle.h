@@ -6,19 +6,18 @@ private :
 	char* Type;
 	char* Color;
 public  :
-	Motorcycle(char*brand,char*date,char*type,char*color):Vehicle(brand,date) {
+	Motorcycle(char*brand,char*date,char*type,char*color):Vehicle(date,brand) {
 		Color = color;
 		Type = type;
 	}
 	Motorcycle() :Vehicle() { Type = "Not Initialized"; Color = "Not Initialized"; }
 	~Motorcycle() {
-		delete(Type);
-		delete(Color);
+		
 	}
 	friend ostream& operator<<(ostream& out, Motorcycle obj) {
 		obj.PrintAsVehicle();
 		cout << ", Type: "; printf("%s ,", obj.Type);
-		cout << ", Color: "; printf("%s\n", obj.Color);
+		cout << "Color: "; printf("%s\n", obj.Color);
 		return out;
 	}
 	bool operator==(Motorcycle obj) {

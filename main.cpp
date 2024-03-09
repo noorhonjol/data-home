@@ -1,6 +1,8 @@
 #include <iostream>
-
+#include "Vehicle.h"
+#include "Motorcycle.h"
+using namespace std;
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+    Motorcycle a;
+    cout << a;
 }

@@ -19,10 +19,11 @@ public :
 		Brand = brand;
 	}
 	Vehicle() { Brand = "Not initialized"; ManufatureDate = "1/1/2000"; };
-	~Vehicle() { delete(Brand); };
+	~Vehicle() {};
 	friend ostream& operator<<(ostream&out,Vehicle obj){
 		printf("Brand: %s", obj.Brand);
 		cout <<", Manufaturing Date: " << obj.ManufatureDate;
+		return out;
 	}
 	bool operator==(Vehicle obj) {
 		if (this->Brand == obj.Brand && this->ManufatureDate == obj.ManufatureDate)return 1;

@@ -8,7 +8,7 @@
 using namespace std;
 
 struct Date {
-public:
+
     Date() {
         putDefault();
     }
@@ -18,7 +18,7 @@ public:
     }
 
     friend std::ostream& operator<<(std::ostream& os, const Date& date) {
-        os << date.day << '/' << date.month << '/' << date.year << std::endl;
+        os << date.day << '/' << date.month << '/' << date.year;
         return os;
     }
 
@@ -26,7 +26,7 @@ public:
         return day == date.day && month == date.month && year == date.year;
     }
 
-private:
+
     void fillDate(const char* date) {
         char* copy = strdup(date);
 
