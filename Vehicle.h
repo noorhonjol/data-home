@@ -21,7 +21,7 @@ public :
 	Vehicle() { Brand = "Not initialized"; ManufatureDate = "1/1/2000"; };
 	~Vehicle() { delete(Brand); };
 	friend ostream& operator<<(ostream&out,Vehicle obj){
-		printf("Brand:%s", obj.Brand);
+		printf("%s", obj.Brand);
 		cout <<", Manufaturing Date: " << obj.ManufatureDate;
 	}
 	bool operator==(Vehicle obj) {
@@ -46,6 +46,9 @@ public :
 	void IncreamentAsVehicle(int add) {
 		//we . cannot . use . ++ . operator . inside . the . inhirited . classes . :D
 		ManufatureDate.year += add;
+	}
+	void operator=(char* date) {
+		ManufatureDate = date;
 	}
 };
 
