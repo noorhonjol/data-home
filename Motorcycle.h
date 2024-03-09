@@ -6,11 +6,15 @@ private :
 	char* Type;
 	char* Color;
 public  :
-	Motorcycle(char*brand,char*date,char*type,char*color):Vehicle(date,brand) {
-		Color = color;
-		Type = type;
+	Motorcycle(const char*brand,const char*date,const char*type,const char*color):Vehicle(date,brand) {
+        fillString(Type,type);
+        fillString(Color,color);
+
 	}
-	Motorcycle() :Vehicle() { Type = "Not Initialized"; Color = "Not Initialized"; }
+	Motorcycle() :Vehicle() {
+        fillString(Type,"Not Initialized");
+        fillString(Type,"Not Initialized");
+    }
 	~Motorcycle() {
 		
 	}
@@ -21,14 +25,14 @@ public  :
 		return out;
 	}
 	bool operator==(Motorcycle obj) {
-		return CheckIfEqualAsVehicle(obj) && strcmp(Color, obj.Color) && strcmp(Type , obj.Type);
+		return CheckIfEqualAsVehicle(obj) && strcmp(Color, obj.Color) != 0 && strcmp(Type , obj.Type) != 0;
 		
 	}
 	Motorcycle operator+=(int increament){
-		IncreamentAsVehicle(increament);
+        increamentAsVehicle(increament);
 		return *this;
 	}
-	Motorcycle operator=(char* date) {
+	Motorcycle& operator=(const char* date) {
 		Motorcycle temp(getbrand(), date,Type ,Color );
 		*this = temp;
 		return *this;

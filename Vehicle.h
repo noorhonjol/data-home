@@ -9,32 +9,36 @@ private :
 	Date ManufatureDate;
 	char* Brand;
 public :
-	
-	Vehicle(Date date, char* brand) {
-		ManufatureDate = date;
-		Brand = brand;
+
+	Vehicle(const char* date,const char* brand) {
+		ManufatureDate.fillDate(date);
+        fillString(Brand,brand);
 	}
-	Vehicle(char* date, char* brand) {
-		ManufatureDate = date;
-		Brand = brand;
-	}
-	Vehicle() { Brand = "Not initialized"; ManufatureDate = "1/1/2000"; };
-	~Vehicle() {};
+
+	Vehicle() {
+        ManufatureDate.putDefault();
+        fillString(Brand,"Not Initialized");
+    };
+	~Vehicle() {
+        //aa
+    };
+
 	friend ostream& operator<<(ostream&out,Vehicle obj){
 		obj.PrintAsVehicle();
 		return out;
 	}
-	bool operator==(Vehicle obj) {
+
+	bool operator==(const Vehicle& obj) {
 		return CheckIfEqualAsVehicle(obj);
 	}
 
 	Vehicle operator++(int) {
 		Vehicle temp = *this;
-		IncreamentAsVehicle(1);
+        increamentAsVehicle(1);
 		return temp;
 	}
 	Vehicle operator++() {
-		IncreamentAsVehicle(1);
+        increamentAsVehicle(1);
 		return *this;
 	}
 	void PrintAsVehicle() {
@@ -42,19 +46,28 @@ public :
 		cout << ", Manufaturing Date: " << ManufatureDate;
 		
 	};
-	bool CheckIfEqualAsVehicle(Vehicle obj) {
+	bool CheckIfEqualAsVehicle(const Vehicle& obj) {
 		
-		return strcmp(this->Brand, obj.Brand) && this->ManufatureDate == obj.ManufatureDate;
+		return strcmp(this->Brand, obj.Brand) != 0 && this->ManufatureDate == obj.ManufatureDate;
 		
 	}
-	void IncreamentAsVehicle(int add) {
+	void increamentAsVehicle(int add) {
 		
 		ManufatureDate.year += add;
 	}
-	char* getbrand() { return Brand; }
-	void operator=(char* date) {
-		ManufatureDate = date;
+	char* getbrand() {
+        return Brand;
+    }
+	void operator=(const char* date) {
+        strcpy(Brand,date);
 	}
+protected:
+    void fillString(char *& toFillMessage,const char *str){
+        const unsigned long long msgLen=strlen(str)+1;
+        toFillMessage=new char[msgLen];
+        strcpy(toFillMessage,str);
+    }
+
 };
 
 

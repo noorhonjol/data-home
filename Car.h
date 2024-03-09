@@ -12,13 +12,14 @@ private :
 	int numDoors;
 	char* engineType;
 public :
-	Car(char*brand,char*date,int numdoors,char*engine):Vehicle(date,brand) {
-		numDoors = numdoors;
-		engineType = engine;
-	}
+	Car(const char*brand,const char*date,int numdoors,const char*engine):Vehicle(date,brand) {
+        fillString(engineType,engine);
+        numDoors = numdoors;
+    }
 	Car() :Vehicle() {
+
 		numDoors = -1;
-		engineType = "Not Initialized";
+        fillString(engineType,"Not Initialized");
 	}
 	~Car(){}
 	friend ostream& operator<<(ostream& out, Car obj) {
@@ -27,15 +28,15 @@ public :
 		cout << "Engine Type: "; printf("%s\n", obj.engineType);
 		return out;
 	}
-	bool operator==(Car obj) {
-		return CheckIfEqualAsVehicle(obj) && strcmp(engineType, obj.engineType) && numDoors==obj.numDoors);
+	bool operator==(const Car& obj) {
+		return CheckIfEqualAsVehicle(obj) && strcmp(engineType, obj.engineType) != 0 && numDoors==obj.numDoors;
 
 	}
 	Car operator+=(int increament) {
-		IncreamentAsVehicle(increament);
+        increamentAsVehicle(increament);
 		return *this;
 	}
-	Car operator=(char* date) {
+	Car& operator=(const char* date) {
 		Car temp(getbrand(), date, numDoors, engineType);
 		*this = temp;
 		return *this;
