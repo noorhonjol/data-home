@@ -10,7 +10,7 @@ public  :
 		Color = color;
 		Type = type;
 	}
-	Motorcycle() :Vehicle() { Type = "unknown"; Color = "unknown"; }
+	Motorcycle() :Vehicle() { Type = "Not Initialized"; Color = "Not Initialized"; }
 	~Motorcycle() {
 		delete(Type);
 		delete(Color);
@@ -25,7 +25,10 @@ public  :
 		if (CheckIfEqualAsVehicle(obj) && Color == obj.Color && Type == obj.Type)return 1;
 		return 0;
 	}
-
+	Motorcycle operator+=(int increament){
+		IncreamentAsVehicle(increament);
+		return *this;
+	}
 };
 
 

@@ -1,10 +1,9 @@
 
 #include <iostream>
+#include "Date.h"
 using namespace std;
 #ifndef DATA_HOME_VEHICLE_H
 #define DATA_HOME_VEHICLE_H
-
-
 class Vehicle {
 private :
 	Date ManufatureDate;
@@ -43,6 +42,10 @@ public :
 		//nor can we use the overload we have in this ,, we leffy bena ya donya
 		if (*this == obj)return 1;
 		return 0;
+	}
+	void IncreamentAsVehicle(int add) {
+		//we . cannot . use . ++ . operator . inside . the . inhirited . classes . :D
+		ManufatureDate.year += add;
 	}
 };
 
