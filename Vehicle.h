@@ -21,31 +21,34 @@ public :
 	Vehicle() { Brand = "Not initialized"; ManufatureDate = "1/1/2000"; };
 	~Vehicle() {};
 	friend ostream& operator<<(ostream&out,Vehicle obj){
-		printf("Brand: %s", obj.Brand);
-		cout <<", Manufaturing Date: " << obj.ManufatureDate;
+		obj.PrintAsVehicle();
 		return out;
 	}
 	bool operator==(Vehicle obj) {
-		if (this->Brand == obj.Brand && this->ManufatureDate == obj.ManufatureDate)return 1;
-		return 0;
+		return CheckIfEqualAsVehicle(obj);
 	}
 
+	Vehicle operator++(int) {
+		Vehicle temp = *this;
+		IncreamentAsVehicle(1);
+		return temp;
+	}
 	Vehicle operator++() {
-		this->ManufatureDate.year++;
+		IncreamentAsVehicle(1);
 		return *this;
 	}
 	void PrintAsVehicle() {
-		//because we cannot call the overload of << in the derived classes directly
-		cout << *this;
+		printf("Brand: %s", Brand);
+		cout << ", Manufaturing Date: " << ManufatureDate;
+		
 	};
 	bool CheckIfEqualAsVehicle(Vehicle obj) {
-		//same with the print .. we cannot check the values in overloading car/motorcycle == operator
-		//nor can we use the overload we have in this ,, we leffy bena ya donya
-		if (*this == obj)return 1;
-		return 0;
+		
+		return strcmp(this->Brand, obj.Brand) && this->ManufatureDate == obj.ManufatureDate;
+		
 	}
 	void IncreamentAsVehicle(int add) {
-		//we . cannot . use . ++ . operator . inside . the . inhirited . classes . :D
+		
 		ManufatureDate.year += add;
 	}
 	void operator=(char* date) {

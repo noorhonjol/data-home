@@ -12,12 +12,11 @@ struct Date {
     Date() {
         putDefault();
     }
-
     Date(const char* date) {
         fillDate(date);
     }
 
-    friend std::ostream& operator<<(std::ostream& os, const Date& date) {
+    friend ostream& operator<<(ostream& os, const Date& date){
         os << date.day << '/' << date.month << '/' << date.year;
         return os;
     }
@@ -37,7 +36,7 @@ struct Date {
 
         for (int i = 0; i < 3; ++i) {
             if (token == nullptr || strlen(token) > ((i == 2) ? 5 : 3)) {
-                handleBadInput("There is bad input");
+                handleBadInput("bad date input");
                 free(copy);
                 return;
             }
@@ -47,7 +46,7 @@ struct Date {
         }
 
         if(!checkResults(dateValues)){
-            handleBadInput("There is bad input");
+            handleBadInput("bad date input");
             return;
         }
 

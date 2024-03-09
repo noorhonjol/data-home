@@ -21,8 +21,8 @@ public  :
 		return out;
 	}
 	bool operator==(Motorcycle obj) {
-		if (CheckIfEqualAsVehicle(obj) && Color == obj.Color && Type == obj.Type)return 1;
-		return 0;
+		return CheckIfEqualAsVehicle(obj) && strcmp(Color, obj.Color) && strcmp(Type , obj.Type);
+		
 	}
 	Motorcycle operator+=(int increament){
 		IncreamentAsVehicle(increament);
